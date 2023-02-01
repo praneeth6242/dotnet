@@ -19,7 +19,7 @@
     when: ansible_facts['distribution'] == "Centos"     
   - name:  install sdk
     ansible.builtin.apt: 
-      name:  "{{dotsdkpackage_name}]"
+      name:  "{{dotsdkpackage_name}}"
       state: present 
   - name:  install runtime
     ansible.builtin.apt: 
