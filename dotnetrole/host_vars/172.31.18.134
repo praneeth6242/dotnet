@@ -1,0 +1,4 @@
+packageurl_name: https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
+packagedest_name: /tmp/packages-microsoft-prod.rpm
+dotsdkpackage_name:  dotnet-sdk-7.0
+dotruntimepackage_name: dotnet-runtime-7.0

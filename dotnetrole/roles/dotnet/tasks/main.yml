@@ -1,0 +1,27 @@
+---
+# tasks file for javarole
+  - name: install packages
+    ansible.builtin.get_url:
+      url: "{{packageurl_name}}"
+      dest: "{{packagedest_name}}"
+  - name:  install rpm package
+    ansible.builtin.yum: 
+      name: /tmp/packages-microsoft-prod.rpm
+      state: present  
+    when: ansible_facts['distribution'] == "Centos"     
+  - name: update cache 
+    ansible.builtin.apt: 
+      update_cache: yes 
+    when: ansible_facts['distribution'] == "Ubuntu"  
+  - name: update cache 
+    ansible.builtin.yum: 
+      update_cache: yes 
+    when: ansible_facts['distribution'] == "Centos"     
+  - name:  install sdk
+    ansible.builtin.apt: 
+      name:  "{{dotsdkpackage_name}]"
+      state: present 
+  - name:  install runtime
+    ansible.builtin.apt: 
+      name: dotnet-runtime-7.0
+      state: present      
