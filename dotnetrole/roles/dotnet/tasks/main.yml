@@ -8,7 +8,7 @@
     ansible.builtin.yum: 
       name: /tmp/packages-microsoft-prod.rpm
       state: present  
-    when: ansible_facts['distribution'] == "Centos"     
+    when: ansible_facts['distribution'] !="Ubuntu"     
   - name: update cache 
     ansible.builtin.apt: 
       update_cache: yes 
@@ -16,12 +16,12 @@
   - name: update cache 
     ansible.builtin.yum: 
       update_cache: yes 
-    when: ansible_facts['distribution'] == "Centos"     
+    when: ansible_facts['distribution'] != "Ubuntu"     
   - name:  install sdk
-    ansible.builtin.apt: 
+    ansible.builtin.package: 
       name:  "{{dotsdkpackage_name}}"
       state: present 
   - name:  install runtime
-    ansible.builtin.apt: 
+    ansible.builtin.package: 
       name: "{{dotruntimepackage_name}}"
       state: present      
