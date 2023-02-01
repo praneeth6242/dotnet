@@ -23,5 +23,5 @@
       state: present 
   - name:  install runtime
     ansible.builtin.apt: 
-      name: dotnet-runtime-7.0
+      name: "{{dotruntimepackage_name}}"
       state: present      
